@@ -27,10 +27,12 @@ def _build_task(product: str) -> dict:
         "input": {
             "instructions": (
                 f"Give me a comprehensive review analysis of '{product}' from all "
-                f"the social media and sources that you have access to.\n\n"
-                f"Search for real user opinions on Reddit, Twitter/X, forums, and "
-                f"review sites. Search news for professional reviews and expert "
-                f"verdicts. Search for the most recent content from the last 7 days.\n\n"
+                f"the sources that you can find.\n\n"
+                f"Search for: Reddit discussions and user opinions about '{product}', "
+                f"professional reviews and expert ratings of '{product}', "
+                f"forum posts and long-term user experiences with '{product}', "
+                f"recent news or controversies about '{product}'.\n\n"
+                f"Do multiple searches to cover different angles. "
                 f"Cite your sources throughout. Be thorough and balanced.\n\n"
                 f"After your research, you MUST end your response with a JSON block "
                 f"wrapped in ```json and ``` tags. The JSON must have this exact structure:\n\n"
@@ -47,8 +49,8 @@ def _build_task(product: str) -> dict:
             ),
             "tools": [
                 {"type": "platform", "id": "web_search"},
-                {"type": "platform", "id": "news_search"},
-                {"type": "platform", "id": "fresh_search"},
+                # {"type": "platform", "id": "news_search"},
+                # {"type": "platform", "id": "fresh_search"},
             ],
         },
         "options": {"await_completion": True},
